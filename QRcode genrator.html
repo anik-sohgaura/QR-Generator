@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="telwind2.css">
+    <title>QR code generator</title>
+    
+</head>
+<body class="bg-slate-800 grid place-content-center h-screen">
+    <div class=" p-5 max-w-lg bg-white rounded-xl shadow-lg flex-col items-center space-y-5">
+        <h1 class="text-2xl font-bold mt-2 text-center">QR code generator</h1>
+
+                 <!-- Input Field -->
+    <input
+    type="text"
+    placeholder="Enter text for QR code" id="input"
+    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+/>  
+
+                <!-- Button -->
+ <button
+ class="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition" id="btn"
+>
+ Generate QR Code
+</button>  
+
+                 <!-- Image -->
+<div class="flex justify-center w-full">
+    <img
+        src="" id="imga"
+        alt="QR Code for"
+        class="w-32 h-32"
+    />
+</div>
+</div>
+
+
+<script >
+const qrinput=document.getElementById('input');
+const qrimage=document.getElementById('imga');
+const qrbutton=document.getElementById('btn');
+
+qrbutton.addEventListener('click',()=>{
+
+    const inputvalue=qrinput.value;                //Retrieves the value entered in the input field (qrinput) and stores it in inputvalue.
+
+    if(!inputvalue){                               //If the input is empty (inputvalue is falsy)
+        alert("please enter valid value ")
+    }
+    else{
+        qrimage.src=` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${inputvalue}`;
+        qrimage.alt=`QR code for ${inputvalue}`;
+    }
+
+});
+
+</script>
+
+
+
+
+    
+</body>
+</html>
